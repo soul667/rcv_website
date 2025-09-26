@@ -1,0 +1,64 @@
+# RCV Website Configuration File
+
+[hero]
+# Hero section slides configuration
+# Images should be placed in assets/media/home_slides/
+# You can modify this list to add/remove/reorder slides
+slides = [
+  { image = "home_8.jpg", alt = "RCV Lab Main Facility" },
+  { image = "home_10.jpg", alt = "Research Laboratory Environment" },
+  { image = "home_14.jpg", alt = "Research Laboratory Environment" },
+  
+  
+#   { image = "home_3.jpg", alt = "Advanced Equipment and Technology" },
+#   { image = "home_4.jpg", alt = "University Campus Building" },
+#   { image = "home_5.jpg", alt = "Engineering Research Facility" },
+#   { image = "home_6.jpg", alt = "Modern Laboratory Setup" },
+]
+
+# Slide transition settings
+auto_play = true
+slide_duration = 5000  # milliseconds
+show_navigation = true
+show_indicators = true
+
+# Alternative slides you can use (uncomment to replace above):
+# slides = [
+#   { image = "home_7.png", alt = "Laboratory Workspace" },
+#   { image = "home_8.png", alt = "Research Equipment" },
+#   { image = "home_9.jpg", alt = "Campus Architecture" },
+#   { image = "home_10.png", alt = "Technology Center" },
+#   { image = "home_11.png", alt = "Innovation Hub" },
+#   { image = "home_12.png", alt = "Academic Building" },
+#   { image = "home_13.png", alt = "Research Center" },
+#   { image = "EngineeringBuilding_VT&R.png", alt = "Engineering Building VT&R" },
+# ]
+
+[site]
+# General site settings
+title = "Robotics and Computer Vision Lab"
+subtitle = "RCV Lab"
+description = "The Robotics and Computer Vision Lab (RCV Lab) is committed to cutting-edge research in the field of robotics."
+
+[navigation]
+# Navigation menu items
+show_language_toggle = true
+default_language = "en"
+available_languages = ["en", "zh"]
+
+[footer]
+# Footer settings
+show_footer = true
+copyright_year = 2024
+
+[contact]
+# Contact information
+email = "contact@rcvlab.org"
+phone = "+1 (555) 123-4567"
+address = "123 University Ave, Research Building"
+
+[social]
+# Social media links (optional)
+# github = "https://github.com/rcvlab"
+# linkedin = "https://linkedin.com/company/rcvlab"
+# twitter = "https://twitter.com/rcvlab"
