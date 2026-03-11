@@ -15,17 +15,16 @@ export function BackButton({ onClick, label, theme = 'dark', className = '' }: B
 
   const themeClasses =
     theme === 'dark'
-      ? 'text-white/70 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30'
-      : 'text-slate-600 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 hover:border-slate-300';
+      ? 'text-white/80 bg-white/5 border border-white/10 hover:bg-white/10 hover:text-white hover:border-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)]'
+      : 'text-slate-600 bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:text-slate-800 hover:border-slate-300 hover:shadow-[0_0_15px_rgba(0,0,0,0.05)]';
 
   return (
-    <Button
+    <button
       onClick={onClick}
-      variant="ghost"
-      className={`mb-4 rounded-full px-5 py-2 h-auto text-sm font-medium transition-all duration-200 ${themeClasses} ${className}`}
+      className={`mb-4 inline-flex items-center justify-center rounded-full px-5 py-2.5 h-auto text-sm font-medium backdrop-blur-md transition-all duration-300 transform hover:-translate-y-0.5 outline-none focus:ring-2 focus:ring-indigo-500/50 ${themeClasses} ${className}`}
     >
-      <ArrowLeft className="h-4 w-4 mr-1" />
+      <ArrowLeft className="h-4 w-4 mr-2 transition-transform duration-300 group-hover:-translate-x-1" />
       {label ?? defaultLabel}
-    </Button>
+    </button>
   );
 }

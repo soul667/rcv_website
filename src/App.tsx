@@ -7,7 +7,6 @@ import { HomePage } from './components/HomePage';
 import { ResearchPage } from './components/pages/ResearchPage';
 import { PublicationsPage } from './components/pages/PublicationsPage';
 import { TeamPage } from './components/pages/TeamPage';
-import { Contact } from './components/Contact';
 import { MemberProfile } from './components/MemberProfile';
 
 function AppContent() {
@@ -23,8 +22,6 @@ function AppContent() {
         return <PublicationsPage />;
       case 'team':
         return <TeamPage />;
-      case 'contact':
-        return <Contact />;
       case 'member-profile':
         return <MemberProfile member={pageData} onBack={() => {}} />;
       default:

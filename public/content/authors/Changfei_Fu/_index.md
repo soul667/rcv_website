@@ -28,9 +28,7 @@ VT&R (Visual Teach and Repeat) is a system to make the wheel  robot track the tr
 
 
 - Rumination Meets VSLAM: You Don't Need to Build All the Submaps in Realtime.[[Paper].](10.1109/TIE.2023.3327342) Weinan Chen†,**Changfei Fu†**, Shing-Yan Loo, Hong Zhang. IEEE Transcations on Industiral Electronics (2023).
-
 - Keyframe Selection with Information Occupancy Grid Model for Long-term Data Association[[Paper].](https://doi.org/10.1109/IROS47612.2022.9981050) Weinan Chen, Hanjing Ye, Lei Zhu, Chao Tang, **Changfei Fu**, Yonggang Chen, Hong Zhang. IROS (2022).
-
 - Moving target recognition based on HSV color space[[Paper].](https://kns.cnki.net/kcms2/article/abstract?v=o5eMcsLgsI4yHMcKmWtGElwzlP3IWELTDMGzVVJYH16LFIr-_y8GUIcMxbu3adBYC5en_T-d57HAwq2N9eiNVpIPbZJXsaqYq0rOSEWUfevhl3ccwdCucYvSFblNjXM0NU5mip6c2GpVDn9krxvVkw==&uniplatform=NZKPT&language=CHS) **Changfei Fu**, Bin Ye, Huijun Li. Control and Information Technology (2020).
 
 ### Honor and Awards

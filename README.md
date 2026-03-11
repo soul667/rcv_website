@@ -31,3 +31,6 @@
   ## Need Update
   -  实验室的仪器设备需要更新
   -  每个人的文章需要更新 （收集文章名即可，导出bibtex）
+
+
+# install typst

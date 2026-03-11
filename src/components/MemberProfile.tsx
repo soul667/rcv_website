@@ -51,9 +51,9 @@ type SocialLink = {
 };
 
 const YouTubeEmbed = ({ videoId, title }: YouTubeEmbedProps) => (
-  <div className="my-8">
+  <div className="my-8 w-full flex justify-center">
     <div 
-      className="bg-slate-800 rounded-lg overflow-hidden shadow-lg mx-auto"
+      className="bg-slate-800 rounded-lg overflow-hidden shadow-lg"
       style={{ 
         width: '100%', 
         maxWidth: '1280px', 
@@ -69,7 +69,6 @@ const YouTubeEmbed = ({ videoId, title }: YouTubeEmbedProps) => (
         allowFullScreen
       />
     </div>
-    <p className="text-center text-gray-400 text-sm mt-3 italic">{title}</p>
   </div>
 );
 
@@ -235,31 +234,23 @@ export function MemberProfile({ member, onBack }: MemberProfileProps) {
         {/* Back Button */}
         <BackButton onClick={handleBack} label={t('team.backToTeam')} />
 
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row gap-8 mb-12">
-          <div className="lg:w-1/3">
-            <ImageWithFallback
-              src={member.image}
-              alt={member.name}
-              className="w-full max-w-sm mx-auto rounded-lg object-cover aspect-square"
-              loading="lazy"
-            />
-          </div>
-          
-          <div className="lg:w-2/3 text-white">
-            <h1 className="text-3xl lg:text-4xl mb-2">
+        {/* Header - Resume Style */}
+        <div className="flex flex-col-reverse sm:flex-row justify-between gap-6 mb-12 sm:items-start items-center">
+          {/* Profile Details (Left) */}
+          <div className="flex-1 text-center sm:text-left text-white pt-1 sm:pt-2">
+            <h1 className="text-3xl lg:text-4xl font-semibold tracking-tight mb-2">
               {language === 'zh' ? member.name : member.nameEn}
             </h1>
-            <p className="text-xl text-gray-300 mb-4">
+            <p className="text-lg text-gray-300 mb-6 font-normal">
               {language === 'zh' ? member.title : member.titleEn}
             </p>
             
-            {/* Contact Info */}
-              <div className="flex flex-wrap gap-4 mb-6">
+            {/* Contact Info - Minimal Inline Style */}
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-6 gap-y-3">
                {member.email && !hasEmailInSocial && (
                  <a
                    href={`mailto:${member.email}`}
-                   className="flex items-center gap-2 px-3 py-2 rounded-full border border-slate-600/60 bg-slate-800/40 text-gray-200 hover:border-orange-400/60 hover:text-white hover:bg-slate-700/50 transition-all"
+                   className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors text-sm sm:text-base"
                  >
                    <Mail className="h-4 w-4" />
                    <span>{member.email}</span>
@@ -274,7 +265,7 @@ export function MemberProfile({ member, onBack }: MemberProfileProps) {
                     href={item.link}
                     target={isMail ? undefined : '_blank'}
                     rel={isMail ? undefined : 'noopener noreferrer'}
-                    className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                    className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors text-sm sm:text-base"
                   >
                     <IconComponent className="h-4 w-4" />
                     <span>{getSocialLabel(item.icon, item.link)}</span>
@@ -283,32 +274,31 @@ export function MemberProfile({ member, onBack }: MemberProfileProps) {
                })}
              </div>
           </div>
+          
+          {/* Smaller Profile Image (Right) */}
+          <div className="flex-shrink-0">
+            <ImageWithFallback
+              src={member.image}
+              alt={member.name}
+              className="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-lg object-cover shadow-md border border-slate-700/50"
+              loading="lazy"
+            />
+          </div>
         </div>
 
+        {/* Divider */}
+        <div className="h-px bg-gradient-to-r from-slate-800 via-slate-600 to-slate-800 my-10 w-full" />
+
         {/* Content - aligned with header */}
-        <div className="border-t border-slate-700/60 pt-8">
-          <div className="prose prose-invert max-w-none">
+        <div>
+          <div className="markdown-custom-wrapper">
+            <div className="markdown-body p-0 bg-transparent text-gray-300">
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
                   components={{
-                    h1: ({ children }) => <h1 className="text-3xl font-bold text-white mb-6 mt-8 first:mt-0">{children}</h1>,
-                    h2: ({ children }) => <h2 className="text-2xl font-semibold text-white mb-4 mt-8 first:mt-0">{children}</h2>,
-                    h3: ({ children }) => <h3 className="text-xl font-semibold text-orange-500 mb-4 mt-6">{children}</h3>,
-                    h4: ({ children }) => <h4 className="text-lg font-semibold text-gray-200 mb-3 mt-4">{children}</h4>,
-                    h5: ({ children }) => <h5 className="text-base font-semibold text-gray-200 mb-2 mt-4">{children}</h5>,
-                    h6: ({ children }) => <h6 className="text-sm font-semibold text-gray-300 mb-2 mt-4">{children}</h6>,
-                    p: ({ children }) => <p className="mb-4 text-gray-300 leading-relaxed">{children}</p>,
-                    ul: ({ children }) => <ul className="list-disc list-inside mb-6 text-gray-300 space-y-1">{children}</ul>,
-                    ol: ({ children }) => <ol className="list-decimal list-inside mb-6 text-gray-300 space-y-1">{children}</ol>,
-                    li: ({ children }) => <li className="mb-1">{children}</li>,
                     a: ({ href, children }) => (
-                      <a 
-                        href={href} 
-                        className="text-orange-500 hover:text-orange-400 transition-colors underline decoration-orange-500/30 hover:decoration-orange-400" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                      >
+                      <a href={href} className="text-[#CB743B] hover:text-[#e08950] transition-colors" target="_blank" rel="noopener noreferrer">
                         {children}
                       </a>
                     ),
@@ -327,56 +317,23 @@ export function MemberProfile({ member, onBack }: MemberProfileProps) {
                       }
                       
                       return (
-                        <div className="my-6 text-center">
+                        <div className="my-6 flex flex-col items-center justify-center w-full" style={{ textAlign: 'center' }}>
                           <img 
                             src={imageSrc} 
                             alt={alt || 'Research image'} 
-                            className="mx-auto rounded-lg shadow-lg max-w-full h-auto"
+                            className="rounded-lg shadow-lg"
                             style={{ 
                               maxWidth: width ? `min(100%, ${width}px)` : '100%',
-                              height: 'auto'
+                              height: 'auto',
+                              display: 'block',
+                              margin: '0 auto'
                             }}
                             {...props}
                           />
-                          {alt && <p className="text-sm text-gray-400 mt-2 italic">{alt}</p>}
                         </div>
                       );
                     },
-                    strong: ({ children }) => <strong className="text-white font-semibold">{children}</strong>,
-                    em: ({ children }) => <em className="text-gray-200 italic">{children}</em>,
-                    blockquote: ({ children }) => (
-                      <blockquote className="border-l-4 border-orange-500 pl-4 my-6 text-gray-300 italic bg-slate-700/30 py-2">
-                        {children}
-                      </blockquote>
-                    ),
-                    code: ({ children, className }) => {
-                      const isInline = !className;
-                      return isInline ? (
-                        <code className="bg-slate-700 text-orange-400 px-2 py-1 rounded text-sm">{children}</code>
-                      ) : (
-                        <code className={`block bg-slate-900 text-gray-300 p-4 rounded-lg overflow-x-auto text-sm ${className}`}>
-                          {children}
-                        </code>
-                      );
-                    },
-                    pre: ({ children }) => (
-                      <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto mb-6">
-                        {children}
-                      </pre>
-                    ),
-                    hr: () => <hr className="border-gray-600 my-8" />,
-                    table: ({ children }) => (
-                      <div className="overflow-x-auto mb-6">
-                        <table className="min-w-full border border-gray-600">
-                          {children}
-                        </table>
-                      </div>
-                    ),
-                    thead: ({ children }) => <thead className="bg-slate-700">{children}</thead>,
-                    tbody: ({ children }) => <tbody>{children}</tbody>,
-                    tr: ({ children }) => <tr className="border-b border-gray-600">{children}</tr>,
-                    th: ({ children }) => <th className="px-4 py-2 text-left text-white font-semibold">{children}</th>,
-                    td: ({ children }) => <td className="px-4 py-2 text-gray-300">{children}</td>,
+                    
                     // Custom YouTube embed component
                     'youtube-embed': ({ 'data-video-id': videoId, 'data-title': title }) => {
                       return <YouTubeEmbed videoId={videoId as string} title={title as string} />;
@@ -387,6 +344,7 @@ export function MemberProfile({ member, onBack }: MemberProfileProps) {
                 </ReactMarkdown>
               </div>
             </div>
+          </div>
       </div>
     </div>
   );
