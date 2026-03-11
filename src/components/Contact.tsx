@@ -1,8 +1,8 @@
 import { Card, CardContent } from './ui/card';
-import { Button } from './ui/button';
-import { MapPin, Phone, Mail, Globe, ArrowLeft } from 'lucide-react';
+import { MapPin, Phone, Mail, Globe } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import { useRouter } from './Router';
+import { BackButton } from './BackButton';
 
 interface ContactProps {
   isStandalonePage?: boolean;
@@ -19,14 +19,7 @@ export function Contact({ isStandalonePage = false }: ContactProps) {
     <section id="contact" className={sectionBg}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {isContactPage && (
-          <Button
-            onClick={() => navigateTo('home')}
-            variant="ghost"
-            className="mb-8 text-slate-600 hover:text-slate-800"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            {language === 'zh' ? '返回主页' : 'Back to Home'}
-          </Button>
+          <BackButton onClick={() => navigateTo('home')} theme="light" />
         )}
         
         <div className="text-center mb-16">
