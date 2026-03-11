@@ -38,6 +38,11 @@ const translations = {
     'team.title': 'Lab Members',
     'team.faculty': 'Faculty Members',
     'team.phd': 'Ph.D Students',
+    'team.master': 'Master Students',
+    'team.researchAssociates': 'Research Associates',
+    'team.adminAssistants': 'Administrative Assistants',
+    'team.others': 'Other Members',
+    'team.alumni': 'Alumni',
     'team.viewProfile': 'View Profile',
     'team.backToTeam': 'Back to Team',
     
@@ -94,6 +99,11 @@ const translations = {
     'team.title': '实验室成员',
     'team.faculty': '教师成员',
     'team.phd': '博士研究生',
+    'team.master': '硕士研究生',
+    'team.researchAssociates': '研究助理',
+    'team.adminAssistants': '行政助理',
+    'team.others': '其他成员',
+    'team.alumni': '毕业校友',
     'team.viewProfile': '查看详情',
     'team.backToTeam': '返回团队',
     

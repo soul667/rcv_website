@@ -1,5 +1,4 @@
 import { Mail, ExternalLink } from 'lucide-react';
-import { Card, CardContent } from './ui/card';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useLanguage } from './LanguageContext';
 import { useRouter } from './Router';
@@ -29,6 +28,11 @@ interface MemberProfileProps {
       link?: string;
     }>;
     markdownContent?: string; // 添加完整的markdown内容
+    social?: {
+      icon: string;
+      icon_pack: string;
+      link: string;
+    }[];
   };
   onBack: () => void;
 }
@@ -82,6 +86,19 @@ export function MemberProfile({ member, onBack }: MemberProfileProps) {
     navigateTo('team');
   };
 
+  // Find personal website or scholar link from social data
+  const websiteLink = member.social?.find((s: any) => 
+    s.icon === 'globe'
+  );
+  const scholarLink = member.social?.find((s: any) => 
+    s.icon === 'graduation-cap'
+  );
+  const githubLink = member.social?.find((s: any) => 
+    s.icon === 'github'
+  );
+  // Use the first available external link (prefer website > scholar > github)
+  const externalLink = websiteLink || scholarLink || githubLink;
+
   return (
     <div className="min-h-screen bg-slate-900 py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,6 +112,7 @@ export function MemberProfile({ member, onBack }: MemberProfileProps) {
               src={member.image}
               alt={member.name}
               className="w-full max-w-sm mx-auto rounded-lg object-cover aspect-square"
+              loading="lazy"
             />
           </div>
           
@@ -117,20 +135,24 @@ export function MemberProfile({ member, onBack }: MemberProfileProps) {
                   <span>{member.email}</span>
                 </a>
               )}
-              <button className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
-                <ExternalLink className="h-4 w-4" />
-                <span>Personal Website</span>
-              </button>
+              {externalLink && (
+                <a
+                  href={externalLink.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  <span>Personal Website</span>
+                </a>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Content */}
-        <div className="space-y-8">
-          {/* Full Markdown Content */}
-          <Card className="bg-slate-800/60 backdrop-blur-lg border-slate-600/60 shadow-xl">
-            <CardContent className="p-8">
-              <div className="prose prose-invert max-w-none">
+        {/* Content - aligned with header */}
+        <div className="border-t border-slate-700/60 pt-8">
+          <div className="prose prose-invert max-w-none">
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
@@ -229,9 +251,7 @@ export function MemberProfile({ member, onBack }: MemberProfileProps) {
                   {parseShortcodes(member.markdownContent || member.bio)}
                 </ReactMarkdown>
               </div>
-            </CardContent>
-          </Card>
-        </div>
+            </div>
       </div>
     </div>
   );
