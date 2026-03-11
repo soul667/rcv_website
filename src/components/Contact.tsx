@@ -1,7 +1,5 @@
 import { Card, CardContent } from './ui/card';
-import { MapPin, Phone, Mail, Globe } from 'lucide-react';
-import { Button } from './ui/button';
-import { MapPin, Phone, Mail, Globe, ArrowLeft, Clock, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Globe, Clock, Send } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import { useRouter } from './Router';
 import { BackButton } from './BackButton';
@@ -17,19 +15,9 @@ export function Contact({ isStandalonePage = false }: ContactProps) {
   const isContactPage = currentPage === 'contact';
 
   return (
-    <section id="contact" className={`min-h-screen bg-gray-900 ${isContactPage ? 'pt-24 pb-20' : 'py-20'}`}>
+    <section id="contact" className={`min-h-screen bg-slate-900 ${isContactPage ? 'pt-20 pb-20' : 'py-20'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {isContactPage && (
-          <BackButton onClick={() => navigateTo('home')} theme="light" />
-          <Button
-            onClick={() => navigateTo('home')}
-            variant="ghost"
-            className="mb-8 text-gray-300 hover:text-white hover:bg-slate-800"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            {language === 'zh' ? '返回主页' : 'Back to Home'}
-          </Button>
-        )}
+        {isContactPage && <BackButton onClick={() => navigateTo('home')} className="md:hidden" />}
 
         {/* Page Header */}
         <div className="text-center mb-16">

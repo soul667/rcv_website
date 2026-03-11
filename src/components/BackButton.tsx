@@ -22,7 +22,7 @@ export function BackButton({ onClick, label, theme = 'dark', className = '' }: B
     <Button
       onClick={onClick}
       variant="ghost"
-      className={`mb-8 rounded-full px-5 py-2 h-auto text-sm font-medium transition-all duration-200 ${themeClasses} ${className}`}
+      className={`mb-4 rounded-full px-5 py-2 h-auto text-sm font-medium transition-all duration-200 ${themeClasses} ${className}`}
     >
       <ArrowLeft className="h-4 w-4 mr-1" />
       {label ?? defaultLabel}

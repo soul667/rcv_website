@@ -5,7 +5,11 @@ import { useLanguage } from './LanguageContext';
 import { useState, useEffect } from 'react';
 import { Publication, loadPublications } from '../utils/bibParser';
 
-export default function Publications() {
+interface PublicationsProps {
+  sectionClassName?: string;
+}
+
+export default function Publications({ sectionClassName = 'py-20 bg-slate-900' }: PublicationsProps) {
   const { t } = useLanguage();
   const [publications, setPublications] = useState<Publication[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,7 +31,7 @@ export default function Publications() {
 
   if (loading) {
     return (
-      <section id="publications" className="py-20 bg-slate-900">
+      <section id="publications" className={sectionClassName}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mx-auto mb-4"></div>
@@ -43,7 +47,7 @@ export default function Publications() {
   const conferencePapers = publications.filter(pub => pub.type === "Conference" || pub.type === "InProceedings");
 
   return (
-    <section id="publications" className="py-20 bg-slate-900">
+    <section id="publications" className={sectionClassName}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl mb-4 text-white">{t('publications.title')}</h2>

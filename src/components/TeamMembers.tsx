@@ -39,15 +39,17 @@ interface AuthorData {
 
 interface TeamMembersProps {
   onMemberClick?: (member: any) => void;
+  sectionClassName?: string;
 }
 
-export function TeamMembers({ onMemberClick }: TeamMembersProps) {
+export function TeamMembers({ onMemberClick, sectionClassName = 'py-20 bg-slate-900' }: TeamMembersProps) {
   const { language, t } = useLanguage();
   const [authors, setAuthors] = useState<AuthorData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const teamCarouselConfig = getTeamCarouselConfig();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   // 轮播图自动播放
   useEffect(() => {
@@ -65,6 +67,27 @@ export function TeamMembers({ onMemberClick }: TeamMembersProps) {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + teamCarouselConfig.slides.length) % teamCarouselConfig.slides.length);
+  };
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(event.touches[0]?.clientX ?? null);
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX === null) return;
+
+    const touchEndX = event.changedTouches[0]?.clientX ?? touchStartX;
+    const swipeDistance = touchStartX - touchEndX;
+
+    if (Math.abs(swipeDistance) > 50) {
+      if (swipeDistance > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+
+    setTouchStartX(null);
   };
 
   useEffect(() => {
@@ -86,7 +109,7 @@ export function TeamMembers({ onMemberClick }: TeamMembersProps) {
 
   if (loading) {
     return (
-      <section id="team" className="py-20 bg-slate-900">
+      <section id="team" className={sectionClassName}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl mb-4 text-white">{t('team.title')}</h2>
@@ -99,7 +122,7 @@ export function TeamMembers({ onMemberClick }: TeamMembersProps) {
 
   if (error) {
     return (
-      <section id="team" className="py-20 bg-slate-900">
+      <section id="team" className={sectionClassName}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl mb-4 text-white">{t('team.title')}</h2>
@@ -113,11 +136,15 @@ export function TeamMembers({ onMemberClick }: TeamMembersProps) {
   const { faculty, phdStudents, masterStudents, researchAssociates, administrativeAssistants, others } = categorizeAuthors(authors);
 
   return (
-    <section id="team" className="py-20 bg-slate-900">
+    <section id="team" className={sectionClassName}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Team Photo Carousel */}
         <div className="mb-16">
-          <div className="relative overflow-hidden rounded-lg">
+          <div
+            className="relative overflow-hidden rounded-lg"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             {/* Background Image */}
             <div className="relative h-64 lg:h-80">
               <ImageWithFallback
@@ -133,13 +160,13 @@ export function TeamMembers({ onMemberClick }: TeamMembersProps) {
               <>
                 <button
                   onClick={prevSlide}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 rounded-full p-3 bg-white/10 backdrop-blur-xl border border-white/30 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-lg"
+                  className="hidden md:block absolute left-4 top-1/2 transform -translate-y-1/2 z-20 rounded-full p-3 bg-white/10 backdrop-blur-xl border border-white/30 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-lg"
                 >
                   <ChevronLeft className="h-6 w-6" />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 rounded-full p-3 bg-white/10 backdrop-blur-xl border border-white/30 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-lg"
+                  className="hidden md:block absolute right-4 top-1/2 transform -translate-y-1/2 z-20 rounded-full p-3 bg-white/10 backdrop-blur-xl border border-white/30 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-lg"
                 >
                   <ChevronRight className="h-6 w-6" />
                 </button>
