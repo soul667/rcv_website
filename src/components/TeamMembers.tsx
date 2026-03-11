@@ -3,7 +3,7 @@ import { Button } from './ui/button';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { ChevronLeft, ChevronRight, Mail } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { loadAllAuthors, categorizeAuthors } from '../utils/authorLoader';
 import { getTeamCarouselConfig } from '../utils/config';
 
