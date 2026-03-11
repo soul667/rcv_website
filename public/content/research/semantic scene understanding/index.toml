@@ -1,0 +1,61 @@
+
+[meta]
+title = "Semantic Scene Understanding"
+title_zh = "语义场景理解"
+weight = 2
+image = "/content/research/semantic scene understanding/featured.png"
+color = "#A855F7"
+
+[description]
+en = "In robotics, semantic scene understanding (SSU) refers to the interpretation of visual scenes to support downstream robot tasks. It involves extracting high-level information from images, videos, point clouds, and natural language, and building contextual correspondences between elements. We tackle scene graph generation, semantic rearrangement, grasping, mapping, active SLAM, and change detection. Our goal is to endow robots with human-level perception and reasoning for real-world applications — closely aligned with the concept of Embodied AI."
+zh = "在机器人学中，语义场景理解（SSU）指对视觉场景的解释与理解，以支持下游机器人任务。它涉及从图像、视频、点云和自然语言中提取高层语义信息，并建立元素之间的上下文对应关系。我们专注于场景图生成、语义重排、语义抓取、语义建图、主动 SLAM 和变化检测等问题。我们的目标是赋予机器人接近人类水平的感知与推理能力，并将 SSU 算法落地到真实机器人应用中——与具身 AI（Embodied AI）的理念高度契合。"
+
+[[keywords]]
+en = "Scene Graph Generation"
+zh = "场景图生成"
+
+[[keywords]]
+en = "Semantic Mapping"
+zh = "语义建图"
+
+[[keywords]]
+en = "Object Detection"
+zh = "目标检测"
+
+[[keywords]]
+en = "Spatial Relationship"
+zh = "空间关系理解"
+
+[[keywords]]
+en = "Point Cloud Analysis"
+zh = "点云分析"
+
+[[members]]
+name = "Chao Tang"
+slug = "chao_tang"
+topic = "object relationship prediction & task-oriented grasping"
+topic_zh = "物体关系预测与任务导向抓取"
+
+[[members]]
+name = "Jiamin Zheng"
+slug = "jiamin_zheng"
+topic = "scene change detection"
+topic_zh = "场景变化检测"
+
+[[members]]
+name = "Dehao Huang"
+slug = "dehao_huang"
+topic = "tabletop rearrangement"
+topic_zh = "桌面重排规划"
+
+[[members]]
+name = "Wenqi Ge"
+slug = "wenqi_ge"
+topic = "indoor scene graph"
+topic_zh = "室内场景图"
+
+[[members]]
+name = "Zijun Lin"
+slug = "zijun_lin"
+topic = "navigation with scene graph prediction"
+topic_zh = "场景图预测导航"

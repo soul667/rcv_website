@@ -69,7 +69,7 @@ export function Header() {
         {/* Drawer Side Panel */}
         <div className="drawer-side z-[100]">
           <label htmlFor={drawerId} aria-label="close sidebar" className="drawer-overlay backdrop-blur-sm bg-black/60" />
-          <div className="menu min-h-full w-72 bg-black/50 backdrop-blur-2xl border-l border-white/10 text-white p-6 flex flex-col gap-1" style={{ boxShadow: '-8px 0 32px rgba(0,0,0,0.5)' }}>
+          <div className="menu min-h-full w-72 bg-black/20 backdrop-blur-md border-l border-white/10 text-white p-6 flex flex-col gap-1" style={{ boxShadow: '-8px 0 32px rgba(0,0,0,0.5)' }}>
             {/* Close hint / branding */}
             <div className="mb-4 pb-4 border-b border-white/10">
               <p className="text-xs text-white/40 tracking-widest uppercase">Navigation</p>
@@ -123,33 +123,29 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav>
-              <div className="flex items-center space-x-1">
+              <div className="flex items-center space-x-2">
                 {navItems.map((item) => (
                   <button
                     key={item.label}
                     onClick={() => navigateTo(item.page)}
-                    className={`relative px-4 py-2 transition-all duration-300 ${
+                    className={`relative px-5 py-2 transition-all duration-300 text-sm font-medium rounded-full tracking-wide ${
                       currentPage === item.page
-                        ? 'text-white rounded-full shadow-lg'
-                        : 'text-gray-200 bg-transparent rounded-full hover:text-white'
+                        ? 'text-white bg-white/15 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(255,255,255,0.05)]'
+                        : 'text-white/70 hover:text-white hover:bg-white/10 border border-transparent'
                     }`}
-                    style={currentPage === item.page ? { backgroundColor: 'rgb(255 255 255 / 13%)' } : undefined}
                   >
                     {item.label}
                   </button>
                 ))}
 
-                <div className="ml-4 pl-4 border-l border-white/20">
-                  <Button
-                    variant="ghost"
-                    size="sm"
+                <div className="ml-4 pl-4 border-l border-white/20 flex items-center">
+                  <button
                     onClick={toggleLanguage}
-                    className="px-3 py-2 text-white hover:bg-[#5a5c60] hover:text-white transition-all duration-300 rounded-full"
-                    style={{ backgroundColor: 'rgb(255 255 255 / 13%)' }}
+                    className="flex items-center px-4 py-2 text-sm font-medium text-white transition-all duration-300 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:border-white/30 shadow-[0_8px_32px_rgba(255,255,255,0.05)] tracking-wide"
                   >
-                    <Globe className="h-4 w-4 mr-2" />
-                    {language === 'en' ? '中文' : 'EN'}
-                  </Button>
+                    <Globe className="h-4 w-4 mr-2 opacity-90" />
+                    <span>{language === 'en' ? '中 文' : 'EN'}</span>
+                  </button>
                 </div>
               </div>
             </nav>

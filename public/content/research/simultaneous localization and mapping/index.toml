@@ -1,0 +1,109 @@
+
+[meta]
+title = "Simultaneous Localization And Mapping (SLAM)"
+title_zh = "同步定位与建图 (SLAM)"
+weight = 1
+image = "/content/research/simultaneous localization and mapping/featured.gif"
+color = "#4F8EF7"
+
+[description]
+en = "SLAM is a technique for obtaining the 3D structure of an unknown environment and sensor motion in the environment. Originally proposed for autonomous robot control, SLAM-based applications have expanded to computer vision-based 3D modeling, AR/VR, and autonomous vehicles. Camera and LiDAR are the primary sensors, yielding Visual SLAM (V-SLAM) and LiDAR-based SLAM. Deep learning has further accelerated SLAM development by integrating semantic segmentation and high-level environmental understanding."
+zh = "SLAM 是一种用于获取未知环境三维结构和传感器运动的技术。该技术最初为实现机器人自主控制而提出，如今广泛应用于计算机视觉三维建模、增强现实（AR）/虚拟现实（VR）及无人自主飞行器等领域。相机和激光雷达是 SLAM 的两种主要传感器，分别对应视觉 SLAM（V-SLAM）和激光雷达 SLAM。深度学习与 SLAM 的结合引入了目标检测、语义分割等高层信息，显著提升了机器人对自身运动和周围环境的理解能力。"
+
+[[keywords]]
+en = "Visual SLAM"
+zh = "视觉 SLAM"
+
+[[keywords]]
+en = "LiDAR SLAM"
+zh = "激光雷达 SLAM"
+
+[[keywords]]
+en = "Deep Learning"
+zh = "深度学习"
+
+[[keywords]]
+en = "Sensor Fusion"
+zh = "传感器融合"
+
+[[keywords]]
+en = "Real-time Localization"
+zh = "实时定位"
+
+[[members]]
+name = "Jingwen Yu"
+slug = "jingwen_yu"
+topic = "multi-sensor fusion SLAM"
+topic_zh = "多传感器融合 SLAM"
+
+[[members]]
+name = "Mingzhe Lv"
+slug = "mingzhe_lv"
+topic = "dense tracking and mapping system"
+topic_zh = "稠密跟踪与建图"
+
+[[members]]
+name = "Bingxi Liu"
+slug = "bingxi_liu"
+topic = "visual localization"
+topic_zh = "视觉定位"
+
+[[members]]
+name = "Zhilong Tang"
+slug = "zhilong_tang"
+topic = "point cloud place recognition"
+topic_zh = "点云位置识别"
+
+[[members]]
+name = "Guangcheng Chen"
+slug = "guangcheng_chen"
+topic = "dense mapping"
+topic_zh = "稠密建图"
+
+[[members]]
+name = "Yaling Pan"
+slug = "yaling_pan"
+topic = "robot localization with natural landmarks"
+topic_zh = "自然地标机器人定位"
+
+[[members]]
+name = "Jiahao Ruan"
+slug = "jiahao_ruan"
+topic = "visual localization"
+topic_zh = "视觉定位"
+
+[[members]]
+name = "Ruihao Zhou"
+slug = "ruihao_zhou"
+topic = "LiDAR place recognition"
+topic_zh = "激光雷达位置识别"
+
+[[members]]
+name = "Changfei Fu"
+slug = "changfei_fu"
+topic = "active view planning for visual SLAM"
+topic_zh = "主动视角规划"
+
+[[members]]
+name = "Jiamin Zheng"
+slug = "jiamin_zheng"
+topic = "long-term SLAM"
+topic_zh = "长期 SLAM"
+
+[[members]]
+name = "Wen Li"
+slug = "wen_li"
+topic = "point cloud registration"
+topic_zh = "点云配准"
+
+[[members]]
+name = "Zijun Lin"
+slug = "zijun_lin"
+topic = "navigation with scene graph"
+topic_zh = "场景图导航"
+
+[[members]]
+name = "Renxiang Xiao"
+slug = "renxiang_xiao"
+topic = "3D LiDAR mapping and navigation"
+topic_zh = "三维激光雷达建图与导航"

@@ -1,0 +1,37 @@
+
+[meta]
+title = "Perception with Polarization Camera"
+title_zh = "偏振相机感知"
+weight = 4
+image = "/content/research/perception with the polarization camera/featured.png"
+color = "#F59E0B"
+
+[description]
+en = "We propose the Perspective Phase Angle (PPA) model as a superior alternative to the Orthographic Phase Angle (OPA) model for accurately utilizing polarization phase angles in 3D reconstruction with perspective cameras. The PPA model also enables planar surface estimation from single-view polarization images, serving as the foundation of polarimetric 3D reconstruction. Our current research exploits geometric cues of polarization for non-Lambertian surface reconstruction and recognition, creating reliable perception systems for mobile robots. Polarization cameras provide compensated information for traditional sensors when dealing with glass and smooth metal surfaces."
+zh = "我们提出了透视相位角（PPA）模型，作为正交相位角（OPA）模型的优越替代方案，用于在透视偏振相机的三维重建中准确利用偏振相位角信息。PPA 模型同时支持从单视图偏振图像估计平面表面，是偏振测量三维重建的理论基础。我们当前的研究聚焦于利用偏振光的几何线索进行非朗伯体表面重建与识别，为移动机器人构建可靠的感知系统。偏振相机对传统传感器在玻璃、光滑金属等难以处理的反射表面上提供了有效的信息补充。"
+
+[[keywords]]
+en = "Polarimetric 3D Reconstruction"
+zh = "偏振三维重建"
+
+[[keywords]]
+en = "Non-Lambertian Surfaces"
+zh = "非朗伯体表面"
+
+[[keywords]]
+en = "Surface Estimation"
+zh = "表面估计"
+
+[[keywords]]
+en = "Material Recognition"
+zh = "材质识别"
+
+[[keywords]]
+en = "Robot Perception"
+zh = "机器人感知"
+
+[[members]]
+name = "Guangcheng Chen"
+slug = "guangcheng_chen"
+topic = "polarimetric 3D reconstruction"
+topic_zh = "偏振三维重建"

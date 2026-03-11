@@ -230,7 +230,7 @@ export function TeamMembers({ onMemberClick, sectionClassName = 'py-20 bg-slate-
             
             <div className="grid gap-6 max-w-4xl mx-auto" style={{ gridTemplateColumns: `repeat(${facultyGridColumns}, minmax(0, 1fr))` }}>
               {faculty.map((member) => (
-                <Card key={member.id} onClick={() => onMemberClick?.(member)} className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative">
+                <Card key={member.id} id={`member-${member.id}`} onClick={() => onMemberClick?.(member)} className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative">
                   {/* Crisp hover background that is invisible by default */}
                   <div className="absolute inset-0 bg-[#2a2a2a]/60 backdrop-blur-md border border-white/10 rounded-[20px] opacity-0 group-hover:opacity-100 shadow-2xl transition-all duration-300 pointer-events-none z-0"></div>
                   
@@ -285,7 +285,7 @@ export function TeamMembers({ onMemberClick, sectionClassName = 'py-20 bg-slate-
             
             <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${memberGridColumns}, minmax(0, 1fr))` }}>
               {phdStudents.map((student) => (
-                <Card key={student.id} onClick={() => onMemberClick?.(student)} className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative">
+                <Card key={student.id} id={`member-${student.id}`} onClick={() => onMemberClick?.(student)} className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative">
                   {/* Crisp hover background that is invisible by default */}
                   <div className="absolute inset-0 bg-[#2a2a2a]/60 backdrop-blur-md border border-white/10 rounded-[20px] opacity-0 group-hover:opacity-100 shadow-2xl transition-all duration-300 pointer-events-none z-0"></div>
                   
@@ -340,7 +340,7 @@ export function TeamMembers({ onMemberClick, sectionClassName = 'py-20 bg-slate-
             
             <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${memberGridColumns}, minmax(0, 1fr))` }}>
               {masterStudents.map((student) => (
-                <Card key={student.id} onClick={() => onMemberClick?.(student)} className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative">
+                <Card key={student.id} id={`member-${student.id}`} onClick={() => onMemberClick?.(student)} className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative">
                   {/* Crisp hover background that is invisible by default */}
                   <div className="absolute inset-0 bg-[#2a2a2a]/60 backdrop-blur-md border border-white/10 rounded-[20px] opacity-0 group-hover:opacity-100 shadow-2xl transition-all duration-300 pointer-events-none z-0"></div>
                   
@@ -395,7 +395,12 @@ export function TeamMembers({ onMemberClick, sectionClassName = 'py-20 bg-slate-
             
             <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${memberGridColumns}, minmax(0, 1fr))` }}>
               {researchAssociates.map((associate) => (
-                <Card key={associate.id} onClick={() => onMemberClick?.(associate)} className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative">
+                <Card 
+                  key={associate.id} 
+                  id={`member-${associate.id}`}
+                  onClick={() => onMemberClick?.(associate)} 
+                  className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative"
+                >
                   {/* Crisp hover background that is invisible by default */}
                   <div className="absolute inset-0 bg-[#2a2a2a]/60 backdrop-blur-md border border-white/10 rounded-[20px] opacity-0 group-hover:opacity-100 shadow-2xl transition-all duration-300 pointer-events-none z-0"></div>
                   
@@ -450,7 +455,12 @@ export function TeamMembers({ onMemberClick, sectionClassName = 'py-20 bg-slate-
             
             <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${memberGridColumns}, minmax(0, 1fr))` }}>
               {administrativeAssistants.map((assistant) => (
-                <Card key={assistant.id} onClick={() => onMemberClick?.(assistant)} className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative">
+                <Card 
+                  key={assistant.id} 
+                  id={`member-${assistant.id}`}
+                  onClick={() => onMemberClick?.(assistant)} 
+                  className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative"
+                >
                   {/* Crisp hover background that is invisible by default */}
                   <div className="absolute inset-0 bg-[#2a2a2a]/60 backdrop-blur-md border border-white/10 rounded-[20px] opacity-0 group-hover:opacity-100 shadow-2xl transition-all duration-300 pointer-events-none z-0"></div>
                   
@@ -505,7 +515,7 @@ export function TeamMembers({ onMemberClick, sectionClassName = 'py-20 bg-slate-
             
             <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${memberGridColumns}, minmax(0, 1fr))` }}>
               {others.map((member) => (
-                <Card key={member.id} onClick={() => onMemberClick?.(member)} className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative">
+                <Card key={member.id} id={`member-${member.id}`} onClick={() => onMemberClick?.(member)} className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative">
                   {/* Crisp hover background that is invisible by default */}
                   <div className="absolute inset-0 bg-[#2a2a2a]/60 backdrop-blur-md border border-white/10 rounded-[20px] opacity-0 group-hover:opacity-100 shadow-2xl transition-all duration-300 pointer-events-none z-0"></div>
                   

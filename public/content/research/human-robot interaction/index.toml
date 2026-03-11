@@ -1,0 +1,61 @@
+
+[meta]
+title = "Human-Robot Interaction"
+title_zh = "人机交互"
+weight = 3
+image = "/content/research/human-robot interaction/featured.gif"
+color = "#22D3A5"
+
+[description]
+en = "We are interested in developing robots capable of natural interaction with human beings. This requires low-level perception (sensing, detection, recognition, tracking) and high-level understanding (prediction, interaction). We focus on two HRI scenarios: Robot Person Following (RPF) and task-aware manipulation. RPF enables a robot to persistently follow its designated person, solving occlusion and target-loss in complex environments. Task-aware manipulation refers to physically manipulating environments to fulfill tasks, using natural language instructions in unconstructed settings such as apartments and offices."
+zh = "我们致力于开发能够与人自然交互的机器人系统，这需要低层感知能力（探测、识别与跟踪）和高层理解能力（行为预测与交互响应）。我们重点关注两类人机交互场景：机器人跟人（RPF）和任务感知操作。RPF 使机器人能够在复杂环境中持续、准确地跟随指定目标人物，解决遮挡与目标丢失问题；任务感知操作则是让机器人根据自然语言指令在非结构化环境（如公寓、办公室）中完成操作任务，包括任务感知抓取、操作轨迹规划和移动基座路径规划。"
+
+[[keywords]]
+en = "Intent Understanding"
+zh = "意图理解"
+
+[[keywords]]
+en = "Behavior Prediction"
+zh = "行为预测"
+
+[[keywords]]
+en = "Natural Language Processing"
+zh = "自然语言处理"
+
+[[keywords]]
+en = "Gesture Recognition"
+zh = "手势识别"
+
+[[keywords]]
+en = "Collaborative Robots"
+zh = "协作机器人"
+
+[[members]]
+name = "Chao Tang"
+slug = "chao_tang"
+topic = "task-oriented manipulation and grasping"
+topic_zh = "任务导向操作与抓取"
+
+[[members]]
+name = "Hanjing Ye"
+slug = "hanjing_ye"
+topic = "robot person following"
+topic_zh = "机器人跟人"
+
+[[members]]
+name = "Jieting Zhao"
+slug = "jieting_zhao"
+topic = "orientation estimation for person following"
+topic_zh = "跟人机器人朝向估计"
+
+[[members]]
+name = "Yu Zhan"
+slug = "yu_zhan"
+topic = "robot navigation with social awareness"
+topic_zh = "社会感知机器人导航"
+
+[[members]]
+name = "Wenqi Ge"
+slug = "wenqi_ge"
+topic = "navigation with scene graph prediction"
+topic_zh = "场景图预测导航"
