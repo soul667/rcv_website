@@ -86,24 +86,6 @@ export function Hero() {
           }}>
             {t('hero.subtitle')}
           </p>
-          
-          {/* Description cards */}
-          <div className="space-y-4 text-center max-w-4xl mx-auto">
-            <div className="backdrop-blur-xl bg-gradient-to-r from-white/15 to-white/5 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:bg-white/20">
-              <p className="text-lg leading-relaxed text-white" style={{ 
-                textShadow: '1px 1px 4px rgba(0,0,0,0.8)' 
-              }}>
-                {t('hero.description1')}
-              </p>
-            </div>
-            <div className="backdrop-blur-xl bg-gradient-to-r from-white/5 to-white/15 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:bg-white/20">
-              <p className="text-lg leading-relaxed text-white" style={{ 
-                textShadow: '1px 1px 4px rgba(0,0,0,0.8)' 
-              }}>
-                {t('hero.description2')}
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 
