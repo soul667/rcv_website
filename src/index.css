@@ -8,17 +8,17 @@
 }
 
 [data-theme="light"] {
-  --b1: 210 40% 98%;
-  --b2: 214 32% 94%;
-  --b3: 214 32% 90%;
-  --bc: 222 47% 11%;
+  --b1: 210 40% 98%; /* base surface */
+  --b2: 214 32% 94%; /* elevated surface */
+  --b3: 214 32% 90%; /* subtle accent surface */
+  --bc: 222 47% 11%; /* base foreground */
 }
 
 [data-theme="dark"] {
-  --b1: 240 5% 12%;
-  --b2: 240 5% 16%;
-  --b3: 240 5% 20%;
-  --bc: 210 40% 98%;
+  --b1: 240 5% 12%; /* base surface */
+  --b2: 240 5% 16%; /* elevated surface */
+  --b3: 240 5% 20%; /* subtle accent surface */
+  --bc: 210 40% 98%; /* base foreground */
 }
 
 @keyframes float-breathe {

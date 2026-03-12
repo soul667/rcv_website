@@ -86,7 +86,7 @@ export function Header() {
         {/* Drawer Side Panel */}
         <div className="drawer-side z-[100]">
           <label htmlFor={drawerId} aria-label="close sidebar" className="drawer-overlay backdrop-blur-sm bg-black/40 dark:bg-black/60" />
-          <div className="theme-surface menu min-h-full w-72 border-l p-6 flex flex-col gap-1" style={{ boxShadow: theme === 'dark' ? '-8px 0 32px rgba(0,0,0,0.5)' : '-8px 0 32px rgba(15,23,42,0.12)' }}>
+          <div className="theme-surface menu min-h-full w-72 border-l p-6 flex flex-col gap-1" style={{ boxShadow: 'var(--drawer-shadow)' }}>
             {/* Close hint / branding */}
             <div className="mb-4 pb-4 border-b theme-divider">
               <p className="theme-muted text-xs tracking-widest uppercase">Navigation</p>

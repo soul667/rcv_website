@@ -212,7 +212,7 @@ function PublicationCard({ pub, index, t, authors }: {
             </span>
             
             {pub.highlighted && (
-              <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-[#CB743B] text-white border border-[#CB743B] animate-pulse">
+              <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-[var(--color-brand-orange)] text-white border border-[var(--color-brand-orange)] animate-pulse">
                 <Award className="w-3 h-3" />
                 {t.featured}
               </span>

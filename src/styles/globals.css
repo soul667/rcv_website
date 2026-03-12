@@ -25,6 +25,7 @@
   --overlay: rgba(15, 23, 42, 0.06);
   --overlay-strong: rgba(15, 23, 42, 0.12);
   --header-background: rgba(255, 255, 255, 0.72);
+  --drawer-shadow: -8px 0 32px rgba(15, 23, 42, 0.12);
   --hero-overlay-start: rgba(2, 6, 23, 0.38);
   --hero-overlay-mid: rgba(2, 6, 23, 0.52);
   --hero-overlay-end: rgba(2, 6, 23, 0.72);
@@ -56,6 +57,7 @@
   --overlay: rgba(255, 255, 255, 0.06);
   --overlay-strong: rgba(255, 255, 255, 0.12);
   --header-background: rgba(10, 15, 24, 0.72);
+  --drawer-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
   --surface-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
 }
 
