@@ -126,7 +126,7 @@ function StatCard({
 }
 function YearSection({ year }: { year: number }) {
   return (
-    <div className="sticky top-0 z-20 pt-8 pb-4 theme-page">
+    <div className="sticky top-0 z-20 pt-8 pb-4" style={{ backdropFilter: 'blur(8px)' }}>
       <div className="flex items-center gap-6">
         <span
           className="text-4xl text-[color:var(--foreground)]"
@@ -176,25 +176,22 @@ function PublicationCard({ pub, index, t, authors }: {
 
   return (
     <motion.div
-      layout
-      initial={{ opacity: 0, scale: 0.98 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.98 }}
-      transition={{ duration: 0.5, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.35, delay: index * 0.03, ease: 'easeOut' }}
       className={`theme-surface group relative rounded-2xl transition-all duration-500 overflow-hidden
         ${pub.highlighted
           ? "border-[color:var(--border-strong)] shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
           : "border-[color:var(--border)]"
         }`}
-      style={{
-        backdropFilter: 'blur(20px)',
-      }}
+      style={{ backdropFilter: 'blur(20px)' }}
     >
       {/* Visual Accents */}
       {pub.highlighted && (
-        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-white/40 via-white/10 to-transparent" />
+        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[color:var(--border-strong)] to-transparent" />
       )}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--overlay)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
       <div className="p-8 relative z-10">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -212,7 +209,7 @@ function PublicationCard({ pub, index, t, authors }: {
             </span>
             
             {pub.highlighted && (
-              <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-[var(--color-brand-orange)] text-white border border-[var(--color-brand-orange)] animate-pulse">
+              <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-[var(--overlay-strong)] text-[color:var(--foreground)] border border-[color:var(--border-strong)] animate-pulse">
                 <Award className="w-3 h-3" />
                 {t.featured}
               </span>
@@ -438,7 +435,7 @@ export function PublicationsPage() {
         ) : (
           <>
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-24">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
               <StatCard icon={BookOpen} value={stats.total} label={t.totalPubs} delay={0.1} />
               <StatCard icon={Library} value={stats.journal} label={t.journalPapers} delay={0.2} />
               <StatCard icon={Users} value={stats.conference} label={t.conferencePapers} delay={0.3} />

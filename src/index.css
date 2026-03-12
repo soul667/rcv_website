@@ -8,9 +8,9 @@
 }
 
 [data-theme="light"] {
-  --b1: 210 40% 98%; /* base surface */
-  --b2: 214 32% 94%; /* elevated surface */
-  --b3: 214 32% 90%; /* subtle accent surface */
+  --b1: 0 0% 97%;   /* base surface — neutral white */
+  --b2: 0 0% 93%;   /* elevated surface */
+  --b3: 0 0% 89%;   /* subtle accent surface */
   --bc: 222 47% 11%; /* base foreground */
 }
 

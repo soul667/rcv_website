@@ -1,5 +1,5 @@
 import { parse as parseTOML } from 'smol-toml';
-import { getContentUrl } from './paths';
+import { getContentUrl, getPublicUrl } from './paths';
 
 interface ResearchArea {
   meta: {
@@ -48,15 +48,25 @@ export async function loadResearchAreas(): Promise<ResearchArea[]> {
         const content = await response.text();
         const data = parseTOML(content) as any;
 
-        const imageName = data.meta?.image
-          ? String(data.meta.image).replace(/^\/+/, '')
-          : '';
+        const rawImage = data.meta?.image ? String(data.meta.image) : '';
+
+        // The image field may be a full path like "/content/research/xxx/featured.gif"
+        // or just a filename like "featured.png". Handle both cases.
+        let imageUrl = '';
+        if (rawImage) {
+          if (rawImage.startsWith('/content/') || rawImage.startsWith('content/')) {
+            // Already a full content path — just resolve relative to public root
+            imageUrl = getPublicUrl(rawImage);
+          } else {
+            // Just a filename — build the full path from folder + filename
+            const fileName = rawImage.replace(/^\/+/, '');
+            imageUrl = getContentUrl(`research/${encodeURIComponent(folder)}/${fileName}`);
+          }
+        }
 
         const meta = {
           ...data.meta,
-          image: imageName
-            ? getContentUrl(`research/${encodeURIComponent(folder)}/${imageName}`)
-            : ''
+          image: imageUrl
         };
         
         return {
