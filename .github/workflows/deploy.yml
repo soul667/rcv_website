@@ -37,7 +37,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Build
         run: pnpm run build
@@ -45,7 +45,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./build
 
   deploy:
     environment:
