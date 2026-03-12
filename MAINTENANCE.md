@@ -2,6 +2,8 @@
 
 This site is a React + Vite single-page app. Content is statically served from `public/` and loaded at runtime via `fetch`. No server or database is required.
 
+👉 中文版本请见 `MAINTENANCE.zh.md`。
+
 ## Running the project
 - Install deps: `npm install`
 - Dev server: `npm run dev` (open http://localhost:5173/rcv_website/ because `base` is `/rcv_website/`)
