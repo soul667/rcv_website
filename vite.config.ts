@@ -4,6 +4,7 @@
   import path from 'path';
 
   export default defineConfig({
+    base: '/rcv_website/',
     plugins: [
       tailwindcss(),
       react()
