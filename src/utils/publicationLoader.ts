@@ -38,7 +38,7 @@ const FALLBACK_PUBLICATIONS = [
 
 async function getPublicationFolders(): Promise<string[]> {
   try {
-    const res = await fetch(getAssetUrl('data/publications.json'));
+    const res = await fetch(getAssetUrl('data/publications.json'), { cache: 'no-cache' });
     if (!res.ok) {
       throw new Error(`Failed to load publications.json (${res.status})`);
     }
@@ -66,7 +66,7 @@ export async function loadAllYamlPublications(): Promise<YamlPublication[]> {
       const pubPromises = publicationFolders.map(async (folder) => {
         try {
           // Fetch YAML file
-          const res = await fetch(getContentUrl(`publication/${folder}/index.yaml`));
+          const res = await fetch(getContentUrl(`publication/${folder}/index.yaml`), { cache: 'force-cache' });
           if (!res.ok) return null;
           
           const yamlText = await res.text();
