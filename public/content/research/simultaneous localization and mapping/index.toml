@@ -85,12 +85,6 @@ topic = "active view planning for visual SLAM"
 topic_zh = "主动视角规划"
 
 [[members]]
-name = "Jiamin Zheng"
-slug = "jiamin_zheng"
-topic = "long-term SLAM"
-topic_zh = "长期 SLAM"
-
-[[members]]
 name = "Wen Li"
 slug = "wen_li"
 topic = "point cloud registration"

@@ -5,6 +5,7 @@
 #### Ph.D. Students
 
 - **Chao Tang** (2020 – 2025), *Kungliga Tekniska Högskolan*
+- **Hanjing Ye** (2022-2026), *Tencent*
 
 #### M.Sc. Students
 
@@ -17,6 +18,11 @@
 - **Wenqi Ge** (2022 – 2025), *University of Hong Kong*
 - **Zhenchao Lin** (2022 – 2025), *VisionNav Robotics*
 - **Zijun Lin** (2022 – 2025), *Kingdee*
+- **Jiamin Zheng** (2021 – 2026)
+- **Chengjie Zhang** (2023 – 2026), *LiberAI*
+- **Luyao Liu** (2023 – 2026), *HONOR*
+- **Wenlong Dong** (2023 – 2026), *Hisense*
+- **Yicheng He** (2023 – 2026), *DJI*
 
 #### Undergraduate Students
 
@@ -28,3 +34,4 @@
 - **Xinkai Jiang** (2021 – 2022), *Karlsruher Institut für Technologie*
 - **Renxiang Xiao** (2023.01 – 2023.12), *Harbin Institute of Technology, Shenzhen*
 - **Qijin She** (2024.04 – 2024.08), *Hong Kong University Of Science and Technology*
+- **Yufan Mao** (2024 – 2026), *Shenzhen InnoX Academy*

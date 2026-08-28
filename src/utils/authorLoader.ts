@@ -36,10 +36,10 @@ type AuthorIndexEntry = string | { id: string; weight?: number; avatar?: string 
 const FALLBACK_AUTHOR_DIRS: string[] = [
   'Aoxiang_Gu', 'Bingxi_Liu', 'Bolin_Zou', 'Changfei_Fu', 'Chengjie_Zhang', 
   'Dehao_Huang', 'Guangcheng_Chen', 'Hanjing_Ye', 'Hejun_Wei', 'Hong_Zhang',
-  'Huaqi_Tao', 'Jiamin_Zheng', 'Jiarui_Xu', 'Jingwen_Yu', 'Li-He',
+  'Huaqi_Tao', 'Jiamin_Zheng', 'Jiarui_Xu', 'Jingwen_Yu', 'Jun_He', 'Li-He',
   'Lihuang_Fang', 'Luyao_Liu', 'Mingzhe_Lv', 'Qianer_Li', 'Senzi_Luo',
   'Tianle_Zeng', 'Tingcui_Yan', 'Weinan_Chen', 'Weixi_Situ', 'Wenlong_Dong',
-  'Yanci_wen', 'Yicheng_He', 'Yu_Zhan', 'Yufan_Mao', 'Zanjia_Tong',
+  'Yanci_wen', 'Yicheng_He', 'Yu_Zhan', 'Zanjia_Tong',
   'Lina_Sun', 'Ravi_Patel', 'Meiling_Chen', 'Haoran_Zhou'
 ];
 
@@ -439,6 +439,11 @@ export function categorizeAuthors(authors: AuthorData[]) {
     author.userGroups.includes('Research Associates') ||
     author.role?.toLowerCase().includes('research associate')
   );
+
+  const researchAssistants = authors.filter(author =>
+    author.userGroups.includes('Research Assistants') ||
+    author.role?.toLowerCase().includes('research assistant')
+  );
   
   const administrativeAssistants = authors.filter(author => 
     author.userGroups.includes('Administrative Assistants') ||
@@ -450,8 +455,9 @@ export function categorizeAuthors(authors: AuthorData[]) {
     !phdStudents.includes(author) && 
     !masterStudents.includes(author) &&
     !researchAssociates.includes(author) &&
+    !researchAssistants.includes(author) &&
     !administrativeAssistants.includes(author)
   );
   
-  return { faculty, phdStudents, masterStudents, researchAssociates, administrativeAssistants, others };
+  return { faculty, phdStudents, masterStudents, researchAssociates, researchAssistants, administrativeAssistants, others };
 }

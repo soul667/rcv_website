@@ -16,6 +16,24 @@ export interface YamlPublication {
   highlighted?: boolean;
 }
 
+/**
+ * Read a publication year without allowing the browser's local timezone to
+ * move an ISO date such as 2026-01-01 back into the previous calendar year.
+ */
+function getPublicationYear(value: unknown): number {
+  const rawValue = String(value ?? '').trim();
+  const leadingYear = rawValue.match(/^(\d{4})(?:\D|$)/);
+
+  if (leadingYear) {
+    return Number(leadingYear[1]);
+  }
+
+  const parsedDate = new Date(rawValue);
+  return Number.isNaN(parsedDate.getTime())
+    ? new Date().getFullYear()
+    : parsedDate.getUTCFullYear();
+}
+
 const FALLBACK_PUBLICATIONS = [
   "an-2022-deep", "an-2023-open", "chen-2020-ceb", "chen-2021-dynamic",
   "chen-2021-robustness", "chen-2022-perspective", "chen-2023-cloud",
@@ -89,7 +107,7 @@ export async function loadAllYamlPublications(): Promise<YamlPublication[]> {
             title: data.title || '',
             authors: data.authors || [],
             venue: data.publication?.replace(/[*]/g, '') || '', // Remove markdown italics *
-            year: data.date ? new Date(data.date).getFullYear() : (new Date().getFullYear()),
+            year: getPublicationYear(data.date),
             type: pubType,
             abstract: data.abstract || data.summary || data.description || undefined,
             doi: data.doi || undefined,

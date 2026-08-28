@@ -37,12 +37,6 @@ topic = "object relationship prediction & task-oriented grasping"
 topic_zh = "物体关系预测与任务导向抓取"
 
 [[members]]
-name = "Jiamin Zheng"
-slug = "jiamin_zheng"
-topic = "scene change detection"
-topic_zh = "场景变化检测"
-
-[[members]]
 name = "Dehao Huang"
 slug = "dehao_huang"
 topic = "tabletop rearrangement"
