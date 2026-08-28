@@ -4,8 +4,7 @@ import { BackButton } from '../BackButton';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { useState, useEffect, useCallback } from 'react';
 import { loadResearchAreas, ResearchArea } from '../../utils/researchLoader';
-import { loadAllAuthors, AuthorData } from '../../utils/authorLoader';
-import { Users, Tag } from 'lucide-react';
+import { Tag } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -27,20 +26,14 @@ export function ResearchPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [animating, setAnimating] = useState(false);
-  const [authors, setAuthors] = useState<AuthorData[]>([]);
 
   useEffect(() => {
     const loadData = async () => {
       try {
         setLoading(true);
-        const [areasData, authorsData] = await Promise.all([
-          loadResearchAreas(),
-          loadAllAuthors(),
-        ]);
+        const areasData = await loadResearchAreas();
         setAreas(areasData);
-        setAuthors(authorsData);
       } catch (err) {
         console.error('Error loading research data:', err);
         setError('Failed to load research areas');
@@ -54,36 +47,11 @@ export function ResearchPage() {
   const handleTabChange = useCallback((index: number) => {
     if (index === activeIndex) return;
     setAnimating(true);
-    setImageLoaded(false);
     setTimeout(() => {
       setActiveIndex(index);
       setAnimating(false);
     }, 200);
   }, [activeIndex]);
-
-  const handleMemberClick = useCallback((slug: string) => {
-    const author = authors.find(
-      (a) => a.id.toLowerCase() === slug.toLowerCase()
-    );
-    if (author) {
-      navigateTo('member-profile', author);
-    } else {
-      // Fallback: navigate to team page and scroll to member
-      navigateTo('team');
-      setTimeout(() => {
-        const el = document.getElementById(`member-${slug}`);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          // If not found in active members, scroll to alumni section
-          const alumniEl = document.getElementById('alumni-section');
-          if (alumniEl) {
-            alumniEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        }
-      }, 100);
-    }
-  }, [navigateTo, authors]);
 
   if (loading) {
     return (
@@ -236,7 +204,7 @@ export function ResearchPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div>
                 {/* Keywords */}
                 <div>
                   <div className="flex items-center gap-2 mb-4">
@@ -253,28 +221,6 @@ export function ResearchPage() {
                         >
                         {language === 'zh' ? kw.zh : kw.en}
                       </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Team Members */}
-                <div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <Users className="h-4 w-4 text-[#CB743B]/60" />
-                    <span className="text-lg font-semibold tracking-wider text-[color:var(--foreground-soft)]">
-                      {language === 'zh' ? '相关实验室成员' : 'Related Lab Members'}
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {active.members.map((member, mi) => (
-                      <button
-                        key={mi}
-                        onClick={() => handleMemberClick(member.slug)}
-                        title={language === 'zh' ? member.topic_zh : member.topic}
-                        className="theme-pill px-4 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 hover:text-[color:var(--foreground)] hover:border-[color:var(--border-strong)] hover:bg-[var(--overlay-strong)]"
-                      >
-                        {member.name}
-                      </button>
                     ))}
                   </div>
                 </div>
@@ -328,26 +274,6 @@ export function ResearchPage() {
                     </div>
                   </div>
 
-                  {/* Mobile Members */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Users className="h-4 w-4 text-[#CB743B]/80" />
-                      <span className="text-base font-semibold tracking-wider text-[color:var(--foreground-soft)]">
-                        {language === 'zh' ? '相关实验室成员' : 'Related Lab Members'}
-                      </span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {area.members.map((member, mi) => (
-                        <button 
-                          key={mi} 
-                          onClick={() => handleMemberClick(member.slug)}
-                          className="theme-pill px-3 py-1.5 rounded-lg text-xs active:bg-[var(--overlay-strong)] transition-colors"
-                        >
-                          {member.name}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
                 </div>
              </div>
            ))}

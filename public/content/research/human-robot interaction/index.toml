@@ -37,12 +37,6 @@ topic = "task-oriented manipulation and grasping"
 topic_zh = "任务导向操作与抓取"
 
 [[members]]
-name = "Hanjing Ye"
-slug = "hanjing_ye"
-topic = "robot person following"
-topic_zh = "机器人跟人"
-
-[[members]]
 name = "Jieting Zhao"
 slug = "jieting_zhao"
 topic = "orientation estimation for person following"

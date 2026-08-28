@@ -195,7 +195,7 @@ export function TeamMembers({ onMemberClick, sectionClassName = 'theme-page py-2
     );
   }
 
-  const { faculty, phdStudents, masterStudents, researchAssociates, administrativeAssistants, others } = categorizeAuthors(authors);
+  const { faculty, phdStudents, masterStudents, researchAssociates, researchAssistants, administrativeAssistants, others } = categorizeAuthors(authors);
 
   return (
     <section id="team" className={sectionClassName}>
@@ -483,6 +483,65 @@ export function TeamMembers({ onMemberClick, sectionClassName = 'theme-page py-2
                         <div className="flex justify-center mt-auto pt-2">
                           <a
                             href={`mailto:${associate.email}`}
+                            className="p-2 inline-flex items-center justify-center rounded-full bg-transparent theme-muted hover:text-[color:var(--foreground)] hover:bg-[var(--overlay-strong)] transition-all duration-300 opacity-0 group-hover:opacity-100"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Mail className="h-[18px] w-[18px]" />
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        )}
+
+            {/* Elegant Section Divider */}
+            <div className="flex items-center justify-center my-12 opacity-40">
+              <div className="w-1/3 h-[1px] theme-divider-glow"></div>
+              <div className="w-2 h-2 rounded-full bg-[color:var(--foreground)] mx-4 shadow-[0_0_8px_rgba(203,116,59,0.45)]"></div>
+              <div className="w-1/3 h-[1px] theme-divider-glow"></div>
+            </div>
+
+        {/* Research Assistants */}
+        {researchAssistants.length > 0 && (
+          <div className="mb-16">
+            <h3 className="text-2xl mb-8 text-[color:var(--foreground)] text-center">{t('team.researchAssistants')}</h3>
+
+            <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${memberGridColumns}, minmax(0, 1fr))` }}>
+              {researchAssistants.map((assistant) => (
+                <Card
+                  key={assistant.id}
+                  id={`member-${assistant.id}`}
+                  onClick={() => onMemberClick?.(assistant)}
+                  className="bg-transparent border-none shadow-none group rounded-[20px] p-4 sm:p-6 text-center hover:-translate-y-1 transition-all duration-300 cursor-pointer relative"
+                >
+                  <div className="absolute inset-0 bg-[var(--panel-strong)] backdrop-blur-md border border-[color:var(--border)] rounded-[20px] opacity-0 group-hover:opacity-100 shadow-2xl transition-all duration-300 pointer-events-none z-0"></div>
+
+                  <CardContent className="p-0 relative z-10 flex flex-col h-full bg-transparent">
+                    <div className="mb-5 relative mx-auto w-24 h-24 sm:w-28 sm:h-28">
+                      <ImageWithFallback
+                        src={assistant.image}
+                        alt={assistant.name}
+                        className="w-full h-full object-cover rounded-full ring-2 ring-transparent group-hover:ring-[color:var(--border-strong)] group-hover:ring-offset-4 group-hover:ring-offset-[var(--background)] transition-all duration-300 relative z-10"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="flex-grow flex flex-col justify-between">
+                      <div>
+                        <h4 className="text-lg sm:text-xl font-bold tracking-tight mb-1 text-[color:var(--foreground)] group-hover:text-[color:var(--foreground)] transition-colors duration-300">
+                          {language === 'zh' ? assistant.name : assistant.nameEn}
+                        </h4>
+                        <p className="text-sm theme-muted font-medium mb-4 group-hover:text-[color:var(--foreground-soft)] transition-colors duration-300">
+                          {language === 'zh' ? assistant.title : assistant.titleEn}
+                        </p>
+                      </div>
+                      {assistant.email && (
+                        <div className="flex justify-center mt-auto pt-2">
+                          <a
+                            href={`mailto:${assistant.email}`}
                             className="p-2 inline-flex items-center justify-center rounded-full bg-transparent theme-muted hover:text-[color:var(--foreground)] hover:bg-[var(--overlay-strong)] transition-all duration-300 opacity-0 group-hover:opacity-100"
                             onClick={(e) => e.stopPropagation()}
                           >

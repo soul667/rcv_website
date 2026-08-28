@@ -1,8 +1,7 @@
 import { useLanguage } from './LanguageContext';
-import { useRouter } from './Router';
 import { useEffect, useState, useCallback } from 'react';
 import { parse as parseTOML } from 'smol-toml';
-import { ChevronRight, Users, Tag } from 'lucide-react';
+import { ChevronRight, Tag } from 'lucide-react';
 import { getContentUrl } from '../utils/paths';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -48,7 +47,6 @@ const RESEARCH_DIRS = [
 
 export function Research() {
   const { language } = useLanguage();
-  const { navigateTo } = useRouter();
 
   const [areas, setAreas] = useState<ResearchArea[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -87,19 +85,6 @@ export function Research() {
       setAnimating(false);
     }, 200);
   }, [activeIndex]);
-
-  const handleMemberClick = useCallback((slug: string) => {
-    navigateTo('team');
-    // Small delay to allow page transition, then scroll/highlight member
-    setTimeout(() => {
-      const el = document.getElementById(`member-${slug}`);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        el.classList.add('member-highlight');
-        setTimeout(() => el.classList.remove('member-highlight'), 2000);
-      }
-    }, 300);
-  }, [navigateTo]);
 
   const active = areas[activeIndex];
 
@@ -255,36 +240,6 @@ export function Research() {
                       >
                         {language === 'zh' ? kw.zh : kw.en}
                       </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Members */}
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <Users className="h-3.5 w-3.5 text-white/40" />
-                    <span className="text-xs font-semibold tracking-widest text-white/40 uppercase">
-                      {language === 'zh' ? '相关成员' : 'Related Members'}
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {active.members.map((member, mi) => (
-                      <button
-                        key={mi}
-                        onClick={() => handleMemberClick(member.slug)}
-                        className="group flex flex-col px-4 py-2.5 rounded-xl text-left transition-all duration-200 border border-white/10 hover:border-white/25"
-                        style={{
-                          background: 'rgba(255,255,255,0.04)',
-                        }}
-                        title={language === 'zh' ? member.topic_zh : member.topic}
-                      >
-                        <span className="text-sm font-semibold text-white/85 group-hover:text-white transition-colors leading-tight">
-                          {member.name}
-                        </span>
-                        <span className="text-xs text-white/40 group-hover:text-white/60 transition-colors mt-0.5 leading-tight">
-                          {language === 'zh' ? member.topic_zh : member.topic}
-                        </span>
-                      </button>
                     ))}
                   </div>
                 </div>
