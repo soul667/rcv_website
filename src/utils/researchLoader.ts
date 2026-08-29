@@ -47,7 +47,7 @@ export async function loadResearchAreas(): Promise<ResearchArea[]> {
       const results = await Promise.all(
         researchFolders.map(async (folder) => {
           try {
-            const response = await fetch(getContentUrl(`research/${encodeURIComponent(folder)}/index.toml`));
+            const response = await fetch(getContentUrl(`research/${encodeURIComponent(folder)}/index.toml`), { cache: 'force-cache' });
             if (!response.ok) {
               console.warn(`Failed to load research area TOML: ${folder}`);
               return null;

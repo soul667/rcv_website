@@ -45,7 +45,7 @@ const FALLBACK_AUTHOR_DIRS: string[] = [
 
 async function getAuthorDirectories(): Promise<{ id: string; avatar?: string }[]> {
   try {
-    const response = await fetch(getAssetUrl('data/authors.json'));
+    const response = await fetch(getAssetUrl('data/authors.json'), { cache: 'no-cache' });
     if (!response.ok) {
       throw new Error(`Failed to load authors.json (${response.status})`);
     }
@@ -318,7 +318,7 @@ function extractPublications(text: string) {
 // Load author data from markdown file
 export async function loadAuthorData(authorId: string, precomputedAvatar?: string): Promise<AuthorData | null> {
   try {
-    const response = await fetch(getContentUrl(`authors/${authorId}/_index.md`));
+    const response = await fetch(getContentUrl(`authors/${authorId}/_index.md`), { cache: 'force-cache' });
     if (!response.ok) return null;
     
     const content = await response.text();
