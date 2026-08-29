@@ -1,5 +1,6 @@
 import { parse as parseTOML } from 'smol-toml';
 import { getContentUrl, getPublicUrl } from './paths';
+import { getCached, setCached } from './cacheStorage';
 
 interface ResearchArea {
   meta: {
@@ -26,12 +27,22 @@ interface ResearchArea {
   folderPath: string; // Keep for internal tracking if needed
 }
 
+const RESEARCH_CACHE_KEY = 'research';
+
 let researchCache: ResearchArea[] | null = null;
 let researchPromise: Promise<ResearchArea[]> | null = null;
 
 // Load all research areas
 export async function loadResearchAreas(): Promise<ResearchArea[]> {  
   if (researchCache) return researchCache;
+
+  // Check persistent cache before issuing any network requests.
+  const persisted = getCached<ResearchArea[]>(RESEARCH_CACHE_KEY);
+  if (persisted) {
+    researchCache = persisted;
+    return persisted;
+  }
+
   if (researchPromise) return researchPromise;
 
   researchPromise = (async () => {
@@ -94,6 +105,7 @@ export async function loadResearchAreas(): Promise<ResearchArea[]> {
       // Sort by weight defined in meta
       const sorted = researchAreas.sort((a, b) => (a.meta?.weight || 0) - (b.meta?.weight || 0));
       researchCache = sorted;
+      setCached(RESEARCH_CACHE_KEY, sorted);
       return sorted;
     } finally {
       researchPromise = null;

@@ -1,5 +1,6 @@
 import matter from 'gray-matter';
 import { getAssetUrl, getContentUrl, getPublicUrl } from './paths';
+import { getCached, setCached } from './cacheStorage';
 
 export interface AuthorData {
   id: string;
@@ -382,12 +383,22 @@ export async function loadAuthorData(authorId: string, precomputedAvatar?: strin
   }
 }
 
+const AUTHORS_CACHE_KEY = 'authors';
+
 let authorsCache: AuthorData[] | null = null;
 let loadAuthorsPromise: Promise<AuthorData[]> | null = null;
 
 // Load all authors
 export async function loadAllAuthors(): Promise<AuthorData[]> {
   if (authorsCache) return authorsCache;
+
+  // Check persistent cache before issuing any network requests.
+  const persisted = getCached<AuthorData[]>(AUTHORS_CACHE_KEY);
+  if (persisted) {
+    authorsCache = persisted;
+    return persisted;
+  }
+
   if (loadAuthorsPromise) return loadAuthorsPromise;
 
   loadAuthorsPromise = (async () => {
@@ -404,6 +415,7 @@ export async function loadAllAuthors(): Promise<AuthorData[]> {
       // Sort by weight (lower weight = higher priority)
       const sorted = authors.sort((a, b) => (a.weight || 999) - (b.weight || 999));
       authorsCache = sorted;
+      setCached(AUTHORS_CACHE_KEY, sorted);
       return sorted;
     } finally {
       loadAuthorsPromise = null;

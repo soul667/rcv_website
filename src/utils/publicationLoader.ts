@@ -1,6 +1,7 @@
 import { parse } from 'yaml';
 import { Publication } from './bibParser'; // Re-use the existing interface or define a new one
 import { getAssetUrl, getContentUrl } from './paths';
+import { getCached, setCached } from './cacheStorage';
 
 export interface YamlPublication {
   id: string; // Used internally as key (folder name)
@@ -71,11 +72,21 @@ async function getPublicationFolders(): Promise<string[]> {
   return FALLBACK_PUBLICATIONS;
 }
 
+const PUBLICATIONS_CACHE_KEY = 'publications';
+
 let publicationsCache: YamlPublication[] | null = null;
 let loadPublicationsPromise: Promise<YamlPublication[]> | null = null;
 
 export async function loadAllYamlPublications(): Promise<YamlPublication[]> {
   if (publicationsCache) return publicationsCache;
+
+  // Check persistent cache before issuing any network requests.
+  const persisted = getCached<YamlPublication[]>(PUBLICATIONS_CACHE_KEY);
+  if (persisted) {
+    publicationsCache = persisted;
+    return persisted;
+  }
+
   if (loadPublicationsPromise) return loadPublicationsPromise;
 
   loadPublicationsPromise = (async () => {
@@ -130,6 +141,7 @@ export async function loadAllYamlPublications(): Promise<YamlPublication[]> {
       // Sort descending by year
       const sorted = validPublications.sort((a, b) => b.year - a.year);
       publicationsCache = sorted;
+      setCached(PUBLICATIONS_CACHE_KEY, sorted);
       return sorted;
     } catch (error) {
       console.error('Failed to load all parallel publications:', error);
